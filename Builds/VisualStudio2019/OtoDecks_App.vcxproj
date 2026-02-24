@@ -146,24 +146,24 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\TrackParser.cpp"/>
-    <ClCompile Include="..\..\Source\PlaylistStorage.cpp"/>
-    <ClCompile Include="..\..\Source\DeckConfiguration.cpp"/>
-    <ClCompile Include="..\..\Source\TrackFactory.cpp"/>
-    <ClCompile Include="..\..\Source\Track.cpp"/>
-    <ClCompile Include="..\..\Source\PlaylistComponent.cpp"/>
-    <ClCompile Include="..\..\Source\WaveformDisplay.cpp"/>
-    <ClCompile Include="..\..\Source\DeckGUI.cpp"/>
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp"/>
+    <ClCompile Include="..\..\Source\FileStorage.cpp"/>
+    <ClCompile Include="..\..\Source\AutoSave.cpp"/>
     <ClCompile Include="..\..\Source\TimeFormat.cpp"/>
+    <ClCompile Include="..\..\Source\DeckConfigurationParser.cpp"/>
     <ClCompile Include="..\..\Source\DeckStorage.cpp"/>
     <ClCompile Include="..\..\Source\HotCueButtonInfo.cpp"/>
-    <ClCompile Include="..\..\Source\AutoSave.cpp"/>
-    <ClCompile Include="..\..\Source\MainComponent.cpp"/>
-    <ClCompile Include="..\..\Source\HotCueButtonPanel.cpp"/>
+    <ClCompile Include="..\..\Source\DeckConfiguration.cpp"/>
+    <ClCompile Include="..\..\Source\DeckGUI.cpp"/>
+    <ClCompile Include="..\..\Source\WaveformDisplay.cpp"/>
     <ClCompile Include="..\..\Source\HotCueButton.cpp"/>
-    <ClCompile Include="..\..\Source\DeckConfigurationParser.cpp"/>
-    <ClCompile Include="..\..\Source\FileStorage.cpp"/>
+    <ClCompile Include="..\..\Source\HotCueButtonPanel.cpp"/>
+    <ClCompile Include="..\..\Source\PlaylistComponent.cpp"/>
+    <ClCompile Include="..\..\Source\PlaylistStorage.cpp"/>
+    <ClCompile Include="..\..\Source\TrackParser.cpp"/>
+    <ClCompile Include="..\..\Source\TrackFactory.cpp"/>
+    <ClCompile Include="..\..\Source\Track.cpp"/>
+    <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
@@ -3071,24 +3071,24 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_opengl.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\TrackParser.h"/>
-    <ClInclude Include="..\..\Source\PlaylistStorage.h"/>
-    <ClInclude Include="..\..\Source\DeckConfiguration.h"/>
-    <ClInclude Include="..\..\Source\TrackFactory.h"/>
-    <ClInclude Include="..\..\Source\Track.h"/>
-    <ClInclude Include="..\..\Source\PlaylistComponent.h"/>
-    <ClInclude Include="..\..\Source\WaveformDisplay.h"/>
-    <ClInclude Include="..\..\Source\DeckGUI.h"/>
-    <ClInclude Include="..\..\Source\TimeFormat.h"/>
     <ClInclude Include="..\..\Source\DJAudioPlayer.h"/>
-    <ClInclude Include="..\..\Source\MainComponent.h"/>
+    <ClInclude Include="..\..\Source\FileStorage.h"/>
+    <ClInclude Include="..\..\Source\AutoSave.h"/>
+    <ClInclude Include="..\..\Source\TimeFormat.h"/>
+    <ClInclude Include="..\..\Source\DeckConfigurationParser.h"/>
     <ClInclude Include="..\..\Source\DeckStorage.h"/>
     <ClInclude Include="..\..\Source\HotCueButtonInfo.h"/>
-    <ClInclude Include="..\..\Source\HotCueButtonPanel.h"/>
-    <ClInclude Include="..\..\Source\DeckConfigurationParser.h"/>
-    <ClInclude Include="..\..\Source\FileStorage.h"/>
+    <ClInclude Include="..\..\Source\DeckConfiguration.h"/>
+    <ClInclude Include="..\..\Source\DeckGUI.h"/>
+    <ClInclude Include="..\..\Source\WaveformDisplay.h"/>
     <ClInclude Include="..\..\Source\HotCueButton.h"/>
-    <ClInclude Include="..\..\Source\AutoSave.h"/>
+    <ClInclude Include="..\..\Source\HotCueButtonPanel.h"/>
+    <ClInclude Include="..\..\Source\PlaylistComponent.h"/>
+    <ClInclude Include="..\..\Source\PlaylistStorage.h"/>
+    <ClInclude Include="..\..\Source\TrackParser.h"/>
+    <ClInclude Include="..\..\Source\TrackFactory.h"/>
+    <ClInclude Include="..\..\Source\Track.h"/>
+    <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

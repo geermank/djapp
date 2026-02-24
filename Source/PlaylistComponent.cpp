@@ -15,22 +15,9 @@
 //==============================================================================
 PlaylistComponent::PlaylistComponent(AudioFormatManager & formatManager) : formatManager(formatManager)
 {
-    addAndMakeVisible(tableComponent);
-    tableComponent.getHeader().addColumn("Tile", 1, 400);
-    tableComponent.getHeader().addColumn("Duration", 2, 100);
-    tableComponent.getHeader().addColumn("", 3, 100);
-    tableComponent.setModel(this);
-    
-    emptyStateLabel.setText("Drop your audio files here or click the button below", juce::dontSendNotification);
-    emptyStateLabel.setJustificationType(juce::Justification::centred);
-    emptyStateLabel.setColour(juce::Label::textColourId, juce::Colours::grey);
-    emptyStateLabel.setVisible(tracks.empty());
-    addAndMakeVisible(emptyStateLabel);
-    
-    addFilesButton.setButtonText("Add files");
-    addFilesButton.addListener(this);
-    addFilesButton.setVisible(tracks.empty());
-    addAndMakeVisible(addFilesButton);
+    setUpTableComponent();
+    setUpEmptyStateComponent();
+    setUpAddFilesComponent();
 }
 
 PlaylistComponent::~PlaylistComponent()
@@ -39,22 +26,10 @@ PlaylistComponent::~PlaylistComponent()
 
 void PlaylistComponent::paint(juce::Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
+    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    
     g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (juce::FontOptions (14.0f));
-    g.drawText ("PlaylistComponent", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+    g.drawRect (getLocalBounds(), 1);
 }
 
 void PlaylistComponent::resized()
@@ -123,11 +98,10 @@ Component* PlaylistComponent::refreshComponentForCell (int rowNumber,
     {
         if (existingComponentToUpdate == nullptr)
         {
-            juce::TextButton* btn = new juce::TextButton("Actions"); // o "Actions"
+            juce::TextButton* btn = new juce::TextButton("Actions");
             btn->addListener(this);
             existingComponentToUpdate = btn;
         }
-        
         existingComponentToUpdate->setComponentID(juce::String(rowNumber));
     }
     return existingComponentToUpdate;
@@ -139,8 +113,9 @@ bool PlaylistComponent::isInterestedInFileDrag (const StringArray &files)
     for (auto file : files)
     {
         juce::File f(file);
-        std::unique_ptr<juce::AudioFormatReader> reader(formatManager.createReaderFor(f));
-        if (reader == nullptr) {
+        if (!isValidFormat(f)) {
+            // if there is no reader for this file in the audio format manager
+            // then we can't process it, so ignore it
             return false;
         }
     }
@@ -209,19 +184,18 @@ void PlaylistComponent::addTrackWithFileChooser(){
     fileChooser.launchAsync (flags, [this] (const FileChooser& chooser)
     {
         File file (chooser.getResult());
-        if (!file.existsAsFile())
+        if (!file.existsAsFile()) {
+            // not a file
             return;
-        
-        std::unique_ptr<juce::AudioFormatReader> reader(formatManager.createReaderFor(file));
-        if (reader == nullptr) {
+        }
+        if (!isValidFormat(file)) {
             // can't read this kind of files, abort
             return;
         }
-        
         if (isTrackAlreadyAdded(file.getFullPathName())) {
+            // already added, don't duplicate tracks
             return;
         }
-        
         std::vector<Track> trackResult;
         trackResult.push_back(TrackFactory::createTrackFromFile(file, formatManager));
         addTracks(trackResult, true);
@@ -275,4 +249,32 @@ Track PlaylistComponent::findTrackByUrl(juce::String url) {
 
 void PlaylistComponent::registerDeckName(juce:: String name) {
     deckNames.push_back(name);
+}
+
+void PlaylistComponent::setUpTableComponent() {
+    addAndMakeVisible(tableComponent);
+    tableComponent.getHeader().addColumn("Tile", 1, 400);
+    tableComponent.getHeader().addColumn("Duration", 2, 100);
+    tableComponent.getHeader().addColumn("", 3, 100);
+    tableComponent.setModel(this);
+}
+
+void PlaylistComponent::setUpEmptyStateComponent() {
+    emptyStateLabel.setText("Drop your audio files here or click the button below", juce::dontSendNotification);
+    emptyStateLabel.setJustificationType(juce::Justification::centred);
+    emptyStateLabel.setColour(juce::Label::textColourId, juce::Colours::grey);
+    emptyStateLabel.setVisible(tracks.empty());
+    addAndMakeVisible(emptyStateLabel);
+}
+
+void PlaylistComponent::setUpAddFilesComponent() {
+    addFilesButton.setButtonText("Add files");
+    addFilesButton.addListener(this);
+    addFilesButton.setVisible(tracks.empty());
+    addAndMakeVisible(addFilesButton);
+}
+
+bool PlaylistComponent::isValidFormat(File f) {
+    std::unique_ptr<juce::AudioFormatReader> reader(formatManager.createReaderFor(f));
+    return reader != nullptr;
 }

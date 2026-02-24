@@ -28,6 +28,9 @@ juce::var DeckConfigurationParser::toVar(DeckConfiguration config)
     obj->setProperty("trackUrl", config.trackUrl);
     obj->setProperty("speed", config.speed);
     obj->setProperty("volume", config.volume);
+    obj->setProperty("lowEq",  config.lowEq);
+    obj->setProperty("midEq",  config.midEq);
+    obj->setProperty("highEq", config.highEq);
 
     juce::Array<juce::var> hotCuesArray;
     for (const auto& hotCue : config.hotCues)
@@ -50,6 +53,9 @@ DeckConfiguration DeckConfigurationParser::fromVar(const juce::var& v)
         v["trackUrl"],
         v["speed"],
         v["volume"],
+        v["lowEq"],
+        v["midEq"],
+        v["highEq"],
         hotCues
     );
 }

@@ -2,6 +2,69 @@
 
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="OtoDecks\Source\audio">
+      <UniqueIdentifier>{D2D2522E-1784-073E-B905-302706AB7B4A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\data">
+      <UniqueIdentifier>{1F770B8E-92D6-9C1F-EAE5-74AF41398DF9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\autosave">
+      <UniqueIdentifier>{93039049-C56F-4946-C62E-915A64291BDD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\utils">
+      <UniqueIdentifier>{9BD708A1-5ABF-B8E6-4A83-1CD009994846}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\parser">
+      <UniqueIdentifier>{BEBCCB7D-418A-C36B-2385-6F8BA81864A2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\storage">
+      <UniqueIdentifier>{C30A9416-9499-BC2F-D2C9-2544876EBDE6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\models\hotcue">
+      <UniqueIdentifier>{D664D761-F50E-8205-DE8C-13B7DAE7A492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\models\config">
+      <UniqueIdentifier>{1F85A9A2-095F-4D64-3FBD-78419CCE9450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\models">
+      <UniqueIdentifier>{22B9F7FE-3990-AAC4-45A4-373891601988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\ui\deck">
+      <UniqueIdentifier>{014ACEE5-BF56-E098-9DA1-A40EF115048B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\ui\waveform">
+      <UniqueIdentifier>{2C8ED46C-30A0-1223-E9C2-27B5070B93C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\ui\hotcuebutton">
+      <UniqueIdentifier>{FDB221C4-14D4-0EE1-A55C-1AD6B1664B54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck\ui">
+      <UniqueIdentifier>{A529739A-8AB0-E333-0EAE-DFBC932BDF29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\deck">
+      <UniqueIdentifier>{530D5AC3-EB4D-F472-8231-ADBFB1A17661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\playlist\ui">
+      <UniqueIdentifier>{700E905B-9237-C55B-0CE5-97854D7AAE38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\playlist\storage">
+      <UniqueIdentifier>{F940BE35-51CF-6432-BDFF-7AD52EF16F73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\playlist">
+      <UniqueIdentifier>{896C314C-41FF-B958-63B5-2ECD5FC72139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\track\parser">
+      <UniqueIdentifier>{63C322EE-86E9-55BF-E36F-3E2B9367413B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\track\factory">
+      <UniqueIdentifier>{B75315E0-1273-C2E4-1927-28D25C8F9C5B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\track\model">
+      <UniqueIdentifier>{91EDF23E-0B90-83F7-6A65-FC8B68E24AFF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OtoDecks\Source\track">
+      <UniqueIdentifier>{41FDDECC-BF52-EAFD-6655-EE2F648E6508}</UniqueIdentifier>
+    </Filter>
     <Filter Include="OtoDecks\Source">
       <UniqueIdentifier>{35A3AE94-1AB3-89C0-566C-A97F5D4E91F7}</UniqueIdentifier>
     </Filter>
@@ -721,58 +784,58 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\TrackParser.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\PlaylistStorage.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\DeckConfiguration.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TrackFactory.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Track.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\PlaylistComponent.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\DeckGUI.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\DJAudioPlayer.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TimeFormat.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\DeckStorage.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\HotCueButtonInfo.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\AutoSave.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\MainComponent.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\HotCueButtonPanel.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\HotCueButton.cpp">
-      <Filter>OtoDecks\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\DeckConfigurationParser.cpp">
-      <Filter>OtoDecks\Source</Filter>
+      <Filter>OtoDecks\Source\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FileStorage.cpp">
+      <Filter>OtoDecks\Source\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\AutoSave.cpp">
+      <Filter>OtoDecks\Source\autosave</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TimeFormat.cpp">
+      <Filter>OtoDecks\Source\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DeckConfigurationParser.cpp">
+      <Filter>OtoDecks\Source\deck\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DeckStorage.cpp">
+      <Filter>OtoDecks\Source\deck\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HotCueButtonInfo.cpp">
+      <Filter>OtoDecks\Source\deck\models\hotcue</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DeckConfiguration.cpp">
+      <Filter>OtoDecks\Source\deck\models\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DeckGUI.cpp">
+      <Filter>OtoDecks\Source\deck\ui\deck</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
+      <Filter>OtoDecks\Source\deck\ui\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HotCueButton.cpp">
+      <Filter>OtoDecks\Source\deck\ui\hotcuebutton</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HotCueButtonPanel.cpp">
+      <Filter>OtoDecks\Source\deck\ui\hotcuebutton</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PlaylistComponent.cpp">
+      <Filter>OtoDecks\Source\playlist\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PlaylistStorage.cpp">
+      <Filter>OtoDecks\Source\playlist\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TrackParser.cpp">
+      <Filter>OtoDecks\Source\track\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TrackFactory.cpp">
+      <Filter>OtoDecks\Source\track\factory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Track.cpp">
+      <Filter>OtoDecks\Source\track\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>OtoDecks\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
@@ -3873,58 +3936,58 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\TrackParser.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\PlaylistStorage.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\DeckConfiguration.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\TrackFactory.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Track.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\PlaylistComponent.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\WaveformDisplay.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\DeckGUI.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\TimeFormat.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\DJAudioPlayer.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MainComponent.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\DeckStorage.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\HotCueButtonInfo.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\HotCueButtonPanel.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\DeckConfigurationParser.h">
-      <Filter>OtoDecks\Source</Filter>
+      <Filter>OtoDecks\Source\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FileStorage.h">
-      <Filter>OtoDecks\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\HotCueButton.h">
-      <Filter>OtoDecks\Source</Filter>
+      <Filter>OtoDecks\Source\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AutoSave.h">
+      <Filter>OtoDecks\Source\autosave</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TimeFormat.h">
+      <Filter>OtoDecks\Source\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DeckConfigurationParser.h">
+      <Filter>OtoDecks\Source\deck\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DeckStorage.h">
+      <Filter>OtoDecks\Source\deck\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\HotCueButtonInfo.h">
+      <Filter>OtoDecks\Source\deck\models\hotcue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DeckConfiguration.h">
+      <Filter>OtoDecks\Source\deck\models\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DeckGUI.h">
+      <Filter>OtoDecks\Source\deck\ui\deck</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\WaveformDisplay.h">
+      <Filter>OtoDecks\Source\deck\ui\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\HotCueButton.h">
+      <Filter>OtoDecks\Source\deck\ui\hotcuebutton</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\HotCueButtonPanel.h">
+      <Filter>OtoDecks\Source\deck\ui\hotcuebutton</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PlaylistComponent.h">
+      <Filter>OtoDecks\Source\playlist\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PlaylistStorage.h">
+      <Filter>OtoDecks\Source\playlist\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TrackParser.h">
+      <Filter>OtoDecks\Source\track\parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TrackFactory.h">
+      <Filter>OtoDecks\Source\track\factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Track.h">
+      <Filter>OtoDecks\Source\track\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>OtoDecks\Source</Filter>
     </ClInclude>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">

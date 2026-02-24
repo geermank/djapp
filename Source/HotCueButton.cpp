@@ -29,8 +29,10 @@ void HotCueButton::clearPosition() {
 }
 
 void HotCueButton::setPositionInSeconds(double positionInSeconds) {
+    if (positionInSeconds < 0) {
+        return;
+    }
     this->positionInSeconds = positionInSeconds;
-
     setButtonText(TimeFormat::formatTrackDuration(positionInSeconds));
 }
 

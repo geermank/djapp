@@ -12,9 +12,11 @@ class PlaylistComponent  : public juce::Component,
                            public FileDragAndDropTarget
 {
 public:
+    //======================= Constructor / Destructor ==========================
     PlaylistComponent(AudioFormatManager & formatManager);
     ~PlaylistComponent() override;
     
+    //=============================== Listener ==================================
     /**
      * Listener class to receive events from PlaylistComponent
      */
@@ -145,6 +147,13 @@ private:
     FileChooser fileChooser = FileChooser{"Select the audio files you want to work with"};
     
     /**
+     * Methods to set up the internal components of the playlist during construction
+     */
+    void setUpTableComponent();
+    void setUpEmptyStateComponent();
+    void setUpAddFilesComponent();
+    
+    /**
      * Runs UI tasks required to show the recently added tracks
      */
     void updateUiAfterNewTrackWasLoaded();
@@ -164,6 +173,9 @@ private:
      * returns true if the file was added to the list of tracks, false otherwise
      */
     bool isTrackAlreadyAdded(juce::String filePath);
+    
+    /** returns true if it is a valid audio file format, flase otherwise */
+    bool isValidFormat(File f);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaylistComponent)
 };

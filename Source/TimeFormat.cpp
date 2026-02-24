@@ -23,3 +23,9 @@ juce::String TimeFormat::formatTrackDuration(double durationInSeconds) {
     else
         return juce::String::formatted("%02ld:%02ld", minutes, seconds);
 }
+
+juce::String TimeFormat::formatTimeAsHHMM(const juce::Time& t)
+{
+    // %H = hours 00-23, %M = minutes 00-59
+    return t.formatted("%H:%M");
+}

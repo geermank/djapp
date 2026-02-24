@@ -29,25 +29,30 @@ class DeckGUI    : public Component,
                    public HotCueButtonPanel::Listener
 {
 public:
+    //======================= Constructor / Destructor ==========================
     DeckGUI(Track track,
             DeckConfiguration config,
             AudioFormatManager & formatManagerToUse,
             AudioThumbnailCache & cacheToUse);
     ~DeckGUI();
     
-    juce::String deckName;
-
+    //=============================== Component =================================
     void paint (Graphics&) override;
     void resized() override;
-
-     /** implement Button::Listener */
-    void buttonClicked (Button *) override;
-
-    /** implement Slider::Listener */
-    void sliderValueChanged (Slider *slider) override; 
-
-    void timerCallback() override; 
     
+    //=========================== Button::Listener ==============================
+   void buttonClicked (Button *) override;
+
+    //=========================== Slider::Listener ==============================
+    void sliderValueChanged (Slider *slider) override;
+
+    //=========================== Timer::Listener ==============================
+    void timerCallback() override;
+    
+    //=========================== Public properties =============================
+    juce::String deckName;
+
+    //============================ Public methods ===============================
     /**
      * Loads a new track in this deck, overriding the previous one
      */
@@ -63,7 +68,7 @@ public:
      */
     DeckConfiguration getCurrentConfig();
     
-    
+    /** hot cue panel listener methods */
     void onHotCuePressed(double positionInSeconds) override;
     double getCurrentPositionInSeconds() override;
     
@@ -78,6 +83,10 @@ private:
     Slider volSlider; 
     Slider speedSlider;
     Slider posSlider;
+    
+    Slider lowEqSlider;
+    Slider midEqSlider;
+    Slider highEqSlider;
 
     WaveformDisplay waveformDisplay;
     
@@ -91,6 +100,8 @@ private:
     
     void playTrack();
     void stopTrack();
+    
+    void setUpEqSlider(Slider* slider, double value);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };

@@ -7,42 +7,30 @@
 */
 
 #include "MainComponent.h"
+#include "TimeFormat.h"
 
 //==============================================================================
 MainComponent::MainComponent()
 {
-    // Make sure you set the size of the component after
-    // you add any child components.
     setSize (800, 600);
 
-    // Some platforms require permissions to open input channels so request that here
     if (RuntimePermissions::isRequired (RuntimePermissions::recordAudio)
         && ! RuntimePermissions::isGranted (RuntimePermissions::recordAudio))
     {
         RuntimePermissions::request (RuntimePermissions::recordAudio,
                                      [&] (bool granted) { if (granted)  setAudioChannels (2, 2); });
-    }  
+    }
     else
     {
         // Specify the number of input and output channels that we want to open
         setAudioChannels (0, 2);
     }
     
-    addAndMakeVisible(deckViewport);
-    deckViewport.setViewedComponent(&deckContainer, false);
-    deckViewport.setScrollBarsShown(false, true, false, true);
-    deckViewport.getHorizontalScrollBar().toFront(false);
-    deckViewport.setScrollBarThickness(SCROLLBAR_THICKNESS);;
+    setUpDeckViewportComponent();
+    setUpPlaylistComponent();
+    setUpEmptyStateComponent();
+    setUpSaveProjectComponent();
     
-    playlistComponent.setListener(this);
-    addAndMakeVisible(playlistComponent);
-    
-    // setup empty decks label and make it visible
-    emptyDecksStateLabel.setText("You haven't created any decks yet!", juce::dontSendNotification);
-    emptyDecksStateLabel.setJustificationType(juce::Justification::centred);
-    emptyDecksStateLabel.setColour(juce::Label::textColourId, juce::Colours::grey);
-    addAndMakeVisible(emptyDecksStateLabel);
-
     formatManager.registerBasicFormats();
         
     restoreAppFromStorage();
@@ -96,35 +84,40 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized()
 {
-    // we will have two "rows" in the main component: one for the horizontal list of decks and another one for the PlaylistComponent
-    int decksHeight = getHeight() * 2/3;
-    int playlistHeight = getHeight() / 3;
-    int viewportChildrenHeight = decksHeight - SCROLLBAR_THICKNESS;
+    // we will have three "rows" in the main component: one for the horizontal list of decks, another one for the PlaylistComponent, and the last one for the save project feature
     
-    int firstRowStartY = 0;
-    int secondRowStartY = decksHeight;
+    // first calculate components height
+    int decksHeight = getHeight() * 15/20;
+    int deckViewportChildrenHeight = decksHeight - SCROLLBAR_THICKNESS;
     
-    deckViewport.setBounds(0, firstRowStartY, getWidth(), decksHeight);
-    playlistComponent.setBounds(0, secondRowStartY, getWidth(), playlistHeight);
-    
-    // not a direct child, but shown within the bounds of the viewport
-    emptyDecksStateLabel.setBounds(0, firstRowStartY, getWidth(), viewportChildrenHeight);
-    
-    emptyDecksStateLabel.setVisible(decks.empty());
-    deckViewport.setVisible(!decks.empty());
+    int playlistHeight = getHeight() * 4/20;
+    int autoSaveActionsHeight = getHeight() * 1/20;
 
+    // components y-axis coordinate
+    int decksRowStartY = 0;
+    int playlistRowStartY = decksHeight;
+    int saveProjectFeatureStartY = decksHeight + playlistHeight;
+    
+    deckViewport.setBounds(0, decksRowStartY, getWidth(), decksHeight);
+    // empty state label is not a direct child of the viewport, but it is shown within its bounds
+    emptyDecksStateLabel.setBounds(0, decksRowStartY, getWidth(), deckViewportChildrenHeight);
+    playlistComponent.setBounds(0, playlistRowStartY, getWidth(), playlistHeight);
+    
     int deckWidth = 300;
     for (int i = 0; i < decks.size(); ++i)
     {
-        decks[i]->setBounds(i * deckWidth, 0, deckWidth, viewportChildrenHeight);
+        decks[i]->setBounds(i * deckWidth, 0, deckWidth, deckViewportChildrenHeight);
     }
 
-    deckContainer.setSize(decks.size() * deckWidth, viewportChildrenHeight);
+    deckContainer.setSize(decks.size() * deckWidth, deckViewportChildrenHeight);
+    
+    nextAutoSaveLabel.setBounds(getWidth() - 455, saveProjectFeatureStartY, 300, autoSaveActionsHeight);
+    saveButton.setBounds(getWidth() - 150, saveProjectFeatureStartY, 150, autoSaveActionsHeight);
 }
 
 juce::String MainComponent::loadTrackInANewDeck(Track track) {
     juce::String newDeckName = juce::String("Deck ") + juce::String(decks.size() + 1);
-    DeckConfiguration config = DeckConfiguration(newDeckName, track.url, 1.0, 1.0);
+    DeckConfiguration config = DeckConfiguration{newDeckName,track.url};
     loadTrackInANewDeck(track, config, true);
     return newDeckName;
 }
@@ -183,20 +176,65 @@ void MainComponent::savedDecksToStorage() {
 
     // save the deck in the list and force resize to force calculations again
     decks.push_back(std::move(deck));
-    
-    resized();
-    
-    // scroll to the latest position, to let the new deck gain focus
-    deckViewport.setViewPositionProportionately(1.0, 0.0);
+
+    // update empty state and decks visibility accordingly
+    deckViewport.setVisible(!decks.empty());
+    emptyDecksStateLabel.setVisible(decks.empty());
     
     // update decks state in storage if requested
     if (saveToStorage) {
         savedDecksToStorage();
     }
+     
+    // call resize needed to display items correctly
+    resized();
+     
+    // scroll to the latest position, to let the new deck gain focus
+    deckViewport.setViewPositionProportionately(1.0, 0.0);
 }
 
 void MainComponent::saveProject() {
     playlistStorage.save(playlistComponent.getTracks());
     savedDecksToStorage();
-    std::cout << "Project saved automatically" << std::endl;
+    std::cout << "Project saved" << std::endl;
+}
+
+void MainComponent::onAutoSaveExecuted(juce::String lastSaveTime, juce::String nextSaveTime) {
+    nextAutoSaveLabel.setText("Last saved at " + lastSaveTime +  + ". Next auto-save at " + nextSaveTime, juce::dontSendNotification);
+}
+
+void MainComponent::buttonClicked(Button* button) {
+    saveProject();
+    
+    juce::String nowTimeFormatted = TimeFormat::formatTimeAsHHMM(juce::Time::getCurrentTime());
+    onAutoSaveExecuted(nowTimeFormatted, getNextAutoSaveTime());
+}
+
+void MainComponent::setUpDeckViewportComponent() {
+    addAndMakeVisible(deckViewport);
+    deckViewport.setViewedComponent(&deckContainer, false);
+    deckViewport.setScrollBarsShown(false, true, false, true);
+    deckViewport.getHorizontalScrollBar().toFront(false);
+    deckViewport.setScrollBarThickness(SCROLLBAR_THICKNESS);
+}
+
+void MainComponent::setUpPlaylistComponent() {
+    playlistComponent.setListener(this);
+    addAndMakeVisible(playlistComponent);
+}
+
+void MainComponent::setUpEmptyStateComponent() {
+    emptyDecksStateLabel.setText("You haven't created any decks yet!", juce::dontSendNotification);
+    emptyDecksStateLabel.setJustificationType(juce::Justification::centred);
+    emptyDecksStateLabel.setColour(juce::Label::textColourId, juce::Colours::grey);
+    addAndMakeVisible(emptyDecksStateLabel);
+}
+
+void MainComponent::setUpSaveProjectComponent() {
+    addAndMakeVisible(nextAutoSaveLabel);
+    nextAutoSaveLabel.setText("Project not saved", juce::dontSendNotification);
+    nextAutoSaveLabel.setJustificationType(juce::Justification::centredRight);
+    
+    addAndMakeVisible(saveButton);
+    saveButton.addListener(this);
 }

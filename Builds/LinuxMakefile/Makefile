@@ -72,24 +72,24 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS_APP := \
-  $(JUCE_OBJDIR)/TrackParser_3bce9aab.o \
-  $(JUCE_OBJDIR)/PlaylistStorage_afaa02a.o \
-  $(JUCE_OBJDIR)/DeckConfiguration_8a6b3dae.o \
-  $(JUCE_OBJDIR)/TrackFactory_39fb5648.o \
-  $(JUCE_OBJDIR)/Track_c9ac1f2c.o \
-  $(JUCE_OBJDIR)/PlaylistComponent_76bc332c.o \
-  $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
-  $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
   $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o \
+  $(JUCE_OBJDIR)/FileStorage_7b2ad440.o \
+  $(JUCE_OBJDIR)/AutoSave_29d1855.o \
   $(JUCE_OBJDIR)/TimeFormat_71c88cad.o \
+  $(JUCE_OBJDIR)/DeckConfigurationParser_9294fad.o \
   $(JUCE_OBJDIR)/DeckStorage_b8b7ef3.o \
   $(JUCE_OBJDIR)/HotCueButtonInfo_b43fe5cf.o \
-  $(JUCE_OBJDIR)/AutoSave_29d1855.o \
-  $(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o \
-  $(JUCE_OBJDIR)/HotCueButtonPanel_349f62cd.o \
+  $(JUCE_OBJDIR)/DeckConfiguration_8a6b3dae.o \
+  $(JUCE_OBJDIR)/DeckGUI_914d8333.o \
+  $(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o \
   $(JUCE_OBJDIR)/HotCueButton_bbfaaa01.o \
-  $(JUCE_OBJDIR)/DeckConfigurationParser_9294fad.o \
-  $(JUCE_OBJDIR)/FileStorage_7b2ad440.o \
+  $(JUCE_OBJDIR)/HotCueButtonPanel_349f62cd.o \
+  $(JUCE_OBJDIR)/PlaylistComponent_76bc332c.o \
+  $(JUCE_OBJDIR)/PlaylistStorage_afaa02a.o \
+  $(JUCE_OBJDIR)/TrackParser_3bce9aab.o \
+  $(JUCE_OBJDIR)/TrackFactory_39fb5648.o \
+  $(JUCE_OBJDIR)/Track_c9ac1f2c.o \
+  $(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
   $(JUCE_OBJDIR)/include_juce_audio_devices_63111d02.o \
@@ -125,54 +125,29 @@ $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) : $(OBJECTS_APP) $(JUCE_OBJDIR)/execinfo.cmd $
 	-$(V_AT)mkdir -p $(JUCE_OUTDIR)
 	$(V_AT)$(CXX) -o $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) $(OBJECTS_APP) $(JUCE_LDFLAGS) $(shell cat $(JUCE_OBJDIR)/execinfo.cmd) $(JUCE_LDFLAGS_APP) $(RESOURCES) $(TARGET_ARCH)
 
-$(JUCE_OBJDIR)/TrackParser_3bce9aab.o: ../../Source/TrackParser.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling TrackParser.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/PlaylistStorage_afaa02a.o: ../../Source/PlaylistStorage.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling PlaylistStorage.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/DeckConfiguration_8a6b3dae.o: ../../Source/DeckConfiguration.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling DeckConfiguration.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/TrackFactory_39fb5648.o: ../../Source/TrackFactory.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling TrackFactory.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/Track_c9ac1f2c.o: ../../Source/Track.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling Track.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/PlaylistComponent_76bc332c.o: ../../Source/PlaylistComponent.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling PlaylistComponent.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o: ../../Source/WaveformDisplay.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling WaveformDisplay.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/DeckGUI_914d8333.o: ../../Source/DeckGUI.cpp
-	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling DeckGUI.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
-
 $(JUCE_OBJDIR)/DJAudioPlayer_f05158f2.o: ../../Source/DJAudioPlayer.cpp
 	-$(V_AT)mkdir -p $(@D)
 	@echo "Compiling DJAudioPlayer.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
+$(JUCE_OBJDIR)/FileStorage_7b2ad440.o: ../../Source/FileStorage.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling FileStorage.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/AutoSave_29d1855.o: ../../Source/AutoSave.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling AutoSave.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/TimeFormat_71c88cad.o: ../../Source/TimeFormat.cpp
 	-$(V_AT)mkdir -p $(@D)
 	@echo "Compiling TimeFormat.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/DeckConfigurationParser_9294fad.o: ../../Source/DeckConfigurationParser.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling DeckConfigurationParser.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/DeckStorage_b8b7ef3.o: ../../Source/DeckStorage.cpp
@@ -185,19 +160,19 @@ $(JUCE_OBJDIR)/HotCueButtonInfo_b43fe5cf.o: ../../Source/HotCueButtonInfo.cpp
 	@echo "Compiling HotCueButtonInfo.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/AutoSave_29d1855.o: ../../Source/AutoSave.cpp
+$(JUCE_OBJDIR)/DeckConfiguration_8a6b3dae.o: ../../Source/DeckConfiguration.cpp
 	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling AutoSave.cpp"
+	@echo "Compiling DeckConfiguration.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
+$(JUCE_OBJDIR)/DeckGUI_914d8333.o: ../../Source/DeckGUI.cpp
 	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling MainComponent.cpp"
+	@echo "Compiling DeckGUI.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/HotCueButtonPanel_349f62cd.o: ../../Source/HotCueButtonPanel.cpp
+$(JUCE_OBJDIR)/WaveformDisplay_c81a80a6.o: ../../Source/WaveformDisplay.cpp
 	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling HotCueButtonPanel.cpp"
+	@echo "Compiling WaveformDisplay.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/HotCueButton_bbfaaa01.o: ../../Source/HotCueButton.cpp
@@ -205,14 +180,39 @@ $(JUCE_OBJDIR)/HotCueButton_bbfaaa01.o: ../../Source/HotCueButton.cpp
 	@echo "Compiling HotCueButton.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/DeckConfigurationParser_9294fad.o: ../../Source/DeckConfigurationParser.cpp
+$(JUCE_OBJDIR)/HotCueButtonPanel_349f62cd.o: ../../Source/HotCueButtonPanel.cpp
 	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling DeckConfigurationParser.cpp"
+	@echo "Compiling HotCueButtonPanel.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/FileStorage_7b2ad440.o: ../../Source/FileStorage.cpp
+$(JUCE_OBJDIR)/PlaylistComponent_76bc332c.o: ../../Source/PlaylistComponent.cpp
 	-$(V_AT)mkdir -p $(@D)
-	@echo "Compiling FileStorage.cpp"
+	@echo "Compiling PlaylistComponent.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/PlaylistStorage_afaa02a.o: ../../Source/PlaylistStorage.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling PlaylistStorage.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/TrackParser_3bce9aab.o: ../../Source/TrackParser.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling TrackParser.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/TrackFactory_39fb5648.o: ../../Source/TrackFactory.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling TrackFactory.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Track_c9ac1f2c.o: ../../Source/Track.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling Track.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
+	-$(V_AT)mkdir -p $(@D)
+	@echo "Compiling MainComponent.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp

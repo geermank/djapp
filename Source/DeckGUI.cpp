@@ -31,6 +31,10 @@ DeckGUI::DeckGUI(Track track,
     addAndMakeVisible(volSlider);
     addAndMakeVisible(speedSlider);
     addAndMakeVisible(posSlider);
+    
+    addAndMakeVisible(lowEqSlider);
+    addAndMakeVisible(midEqSlider);
+    addAndMakeVisible(highEqSlider);
 
     addAndMakeVisible(waveformDisplay);
     
@@ -50,6 +54,10 @@ DeckGUI::DeckGUI(Track track,
     speedSlider.setValue(config.speed);
     
     posSlider.setRange(0.0, 1.0);
+    
+    setUpEqSlider(&lowEqSlider, config.lowEq);
+    setUpEqSlider(&midEqSlider, config.midEq);
+    setUpEqSlider(&highEqSlider, config.highEq);
     
     startTimer(500);
     
@@ -78,7 +86,7 @@ void DeckGUI::paint (Graphics& g)
 
 void DeckGUI::resized()
 {
-    double rowH = getHeight() / 10;
+    double rowH = getHeight() / 14;
     trackName.setBounds(0, 0, getWidth(), rowH);
     playButton.setBounds(0, rowH, getWidth() / 2, rowH);
     stopButton.setBounds(getWidth() / 2, rowH, getWidth() / 2, rowH);
@@ -87,6 +95,13 @@ void DeckGUI::resized()
     posSlider.setBounds(0, rowH * 4, getWidth(), rowH);
     waveformDisplay.setBounds(0, rowH * 5, getWidth(), rowH * 2);
     hotCueButtonPanel.setBounds(0, rowH * 7, getWidth(), rowH * 3);
+    
+    int eqY = rowH * 10;
+    int eqWidth = getWidth() / 3;
+    int eqHeight = rowH * 4;
+    lowEqSlider.setBounds(0, eqY, eqWidth, eqHeight);
+    midEqSlider.setBounds(eqWidth, eqY, eqWidth, eqHeight);
+    highEqSlider.setBounds(eqWidth * 2,  eqY, eqWidth, eqHeight);
 }
 
 void DeckGUI::buttonClicked(Button* button)
@@ -107,17 +122,26 @@ void DeckGUI::sliderValueChanged (Slider *slider)
     {
         player->setGain(slider->getValue());
     }
-
     if (slider == &speedSlider)
     {
         player->setSpeed(slider->getValue());
     }
-    
     if (slider == &posSlider)
     {
         player->setPositionRelative(slider->getValue());
     }
-    
+    if (slider == &lowEqSlider)
+    {
+        player->setLowGain((float) slider->getValue());
+    }
+    if (slider == &midEqSlider)
+    {
+        player->setMidGain((float) slider->getValue());
+    }
+    if (slider == &highEqSlider)
+    {
+        player->setHighGain((float) slider->getValue());
+    }
 }
 
 void DeckGUI::timerCallback()
@@ -171,6 +195,9 @@ DeckConfiguration DeckGUI::getCurrentConfig() {
         track.url,
         speedSlider.getValue(),
         volSlider.getValue(),
+        lowEqSlider.getValue(),
+        midEqSlider.getValue(),
+        highEqSlider.getValue(),
         hotCues
     };
 }
@@ -181,4 +208,12 @@ void DeckGUI::onHotCuePressed(double positionInSeconds) {
 
 double DeckGUI::getCurrentPositionInSeconds() {
     return player->getPositionInSeconds();
+}
+
+void DeckGUI::setUpEqSlider(Slider* slider, double value) {
+    slider->setRange(-24.0, 24.0);
+    slider->setValue(value);
+    slider->setSliderStyle(juce::Slider::Rotary);
+    slider->setTextBoxStyle(juce::Slider::TextBoxBelow, false, 50, 20);
+    slider->addListener(this);
 }

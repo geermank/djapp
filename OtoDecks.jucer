@@ -3,60 +3,102 @@
 <JUCERPROJECT id="sQfdmN" name="OtoDecks" projectType="guiapp" jucerFormatVersion="1">
   <MAINGROUP id="mcJZqF" name="OtoDecks">
     <GROUP id="{356C603F-01E1-55B2-02A0-F2D89D9A59E6}" name="Source">
-      <FILE id="oED8Zc" name="TrackParser.cpp" compile="1" resource="0" file="Source/TrackParser.cpp"/>
-      <FILE id="WT7zud" name="TrackParser.h" compile="0" resource="0" file="Source/TrackParser.h"/>
-      <FILE id="fTkwZK" name="PlaylistStorage.cpp" compile="1" resource="0"
-            file="Source/PlaylistStorage.cpp"/>
-      <FILE id="B7GZZu" name="PlaylistStorage.h" compile="0" resource="0"
-            file="Source/PlaylistStorage.h"/>
-      <FILE id="FTPkUi" name="DeckConfiguration.cpp" compile="1" resource="0"
-            file="Source/DeckConfiguration.cpp"/>
-      <FILE id="k4iFIE" name="DeckConfiguration.h" compile="0" resource="0"
-            file="Source/DeckConfiguration.h"/>
-      <FILE id="M4wlRh" name="TrackFactory.cpp" compile="1" resource="0"
-            file="Source/TrackFactory.cpp"/>
-      <FILE id="SovvwT" name="TrackFactory.h" compile="0" resource="0" file="Source/TrackFactory.h"/>
-      <FILE id="lf3PCP" name="Track.cpp" compile="1" resource="0" file="Source/Track.cpp"/>
-      <FILE id="PA6OCq" name="Track.h" compile="0" resource="0" file="Source/Track.h"/>
-      <FILE id="m6nnpI" name="PlaylistComponent.cpp" compile="1" resource="0"
-            file="Source/PlaylistComponent.cpp"/>
-      <FILE id="Syd50J" name="PlaylistComponent.h" compile="0" resource="0"
-            file="Source/PlaylistComponent.h"/>
-      <FILE id="MZMhdF" name="WaveformDisplay.cpp" compile="1" resource="0"
-            file="Source/WaveformDisplay.cpp"/>
-      <FILE id="P8saE2" name="WaveformDisplay.h" compile="0" resource="0"
-            file="Source/WaveformDisplay.h"/>
-      <FILE id="mY8mBE" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
-      <FILE id="pXoLBs" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
-      <FILE id="TIQiuh" name="DJAudioPlayer.cpp" compile="1" resource="0"
-            file="Source/DJAudioPlayer.cpp"/>
-      <FILE id="oT54zB" name="TimeFormat.cpp" compile="1" resource="0" file="Source/TimeFormat.cpp"/>
-      <FILE id="jFH5nT" name="TimeFormat.h" compile="0" resource="0" file="Source/TimeFormat.h"/>
-      <FILE id="aVDLxo" name="DJAudioPlayer.h" compile="0" resource="0" file="Source/DJAudioPlayer.h"/>
+      <GROUP id="{43D08731-AD5D-3A86-B683-B1C13AE44BE5}" name="audio">
+        <FILE id="TIQiuh" name="DJAudioPlayer.cpp" compile="1" resource="0"
+              file="Source/DJAudioPlayer.cpp"/>
+        <FILE id="aVDLxo" name="DJAudioPlayer.h" compile="0" resource="0" file="Source/DJAudioPlayer.h"/>
+      </GROUP>
+      <GROUP id="{87084339-740C-905F-919D-EB35242D079B}" name="data">
+        <FILE id="jKmcxA" name="FileStorage.h" compile="0" resource="0" file="Source/FileStorage.h"/>
+        <FILE id="u06j4n" name="FileStorage.cpp" compile="1" resource="0" file="Source/FileStorage.cpp"/>
+      </GROUP>
+      <GROUP id="{036B3F98-75AB-E5AC-5794-A5076500CE8D}" name="autosave">
+        <FILE id="VDZQqS" name="AutoSave.cpp" compile="1" resource="0" file="Source/AutoSave.cpp"/>
+        <FILE id="V5xAZa" name="AutoSave.h" compile="0" resource="0" file="Source/AutoSave.h"/>
+      </GROUP>
+      <GROUP id="{581B5207-4392-DB68-7C44-E248F23B85E5}" name="utils">
+        <FILE id="oT54zB" name="TimeFormat.cpp" compile="1" resource="0" file="Source/TimeFormat.cpp"/>
+        <FILE id="jFH5nT" name="TimeFormat.h" compile="0" resource="0" file="Source/TimeFormat.h"/>
+      </GROUP>
+      <GROUP id="{E65FBFD2-0A2E-7408-4AA2-F130A2A4EE3D}" name="deck">
+        <GROUP id="{F2954DA1-ECBB-32C0-6B81-BDD64AF8C638}" name="parser">
+          <FILE id="IEQzih" name="DeckConfigurationParser.cpp" compile="1" resource="0"
+                file="Source/DeckConfigurationParser.cpp"/>
+          <FILE id="Dqdy3r" name="DeckConfigurationParser.h" compile="0" resource="0"
+                file="Source/DeckConfigurationParser.h"/>
+        </GROUP>
+        <GROUP id="{76DDC52B-389E-9893-235D-7A6D2A65FA9A}" name="storage">
+          <FILE id="Lr36v6" name="DeckStorage.cpp" compile="1" resource="0" file="Source/DeckStorage.cpp"/>
+          <FILE id="g2VN60" name="DeckStorage.h" compile="0" resource="0" file="Source/DeckStorage.h"/>
+        </GROUP>
+        <GROUP id="{494E1CFE-CE44-5BA2-CB2B-BEF7EA26FD73}" name="models">
+          <GROUP id="{2689DDE7-5C15-8CD4-5654-51EF0D00AA51}" name="hotcue">
+            <FILE id="lcX3yQ" name="HotCueButtonInfo.cpp" compile="1" resource="0"
+                  file="Source/HotCueButtonInfo.cpp"/>
+            <FILE id="uyxbiI" name="HotCueButtonInfo.h" compile="0" resource="0"
+                  file="Source/HotCueButtonInfo.h"/>
+          </GROUP>
+          <GROUP id="{0CD2C4CA-8D87-A379-22A3-1649DC66BED4}" name="config">
+            <FILE id="FTPkUi" name="DeckConfiguration.cpp" compile="1" resource="0"
+                  file="Source/DeckConfiguration.cpp"/>
+            <FILE id="k4iFIE" name="DeckConfiguration.h" compile="0" resource="0"
+                  file="Source/DeckConfiguration.h"/>
+          </GROUP>
+        </GROUP>
+        <GROUP id="{D2561FFB-5871-70A2-60CB-348319BF4FEC}" name="ui">
+          <GROUP id="{8DAA2201-9F4E-5850-228A-331B62688ABF}" name="deck">
+            <FILE id="mY8mBE" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
+            <FILE id="pXoLBs" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
+          </GROUP>
+          <GROUP id="{CFD7459A-B66E-1219-418B-0A267DE44351}" name="waveform">
+            <FILE id="P8saE2" name="WaveformDisplay.h" compile="0" resource="0"
+                  file="Source/WaveformDisplay.h"/>
+            <FILE id="MZMhdF" name="WaveformDisplay.cpp" compile="1" resource="0"
+                  file="Source/WaveformDisplay.cpp"/>
+          </GROUP>
+          <GROUP id="{B4E870B8-2EB5-07D0-E7D5-0CF9ABF225F4}" name="hotcuebutton">
+            <FILE id="m0T1PV" name="HotCueButton.cpp" compile="1" resource="0"
+                  file="Source/HotCueButton.cpp"/>
+            <FILE id="bJUd3u" name="HotCueButton.h" compile="0" resource="0" file="Source/HotCueButton.h"/>
+            <FILE id="wVdcSG" name="HotCueButtonPanel.cpp" compile="1" resource="0"
+                  file="Source/HotCueButtonPanel.cpp"/>
+            <FILE id="ogSQh3" name="HotCueButtonPanel.h" compile="0" resource="0"
+                  file="Source/HotCueButtonPanel.h"/>
+          </GROUP>
+        </GROUP>
+      </GROUP>
+      <GROUP id="{A681DAFE-5FAA-FDC5-7D57-ED8E2A0414E5}" name="playlist">
+        <GROUP id="{DE07182B-7D59-C649-310C-CE29AB89CE5A}" name="ui">
+          <FILE id="m6nnpI" name="PlaylistComponent.cpp" compile="1" resource="0"
+                file="Source/PlaylistComponent.cpp"/>
+          <FILE id="Syd50J" name="PlaylistComponent.h" compile="0" resource="0"
+                file="Source/PlaylistComponent.h"/>
+        </GROUP>
+        <GROUP id="{F598A5F1-6D99-1EFC-FF89-0D6E44A490A2}" name="storage">
+          <FILE id="fTkwZK" name="PlaylistStorage.cpp" compile="1" resource="0"
+                file="Source/PlaylistStorage.cpp"/>
+          <FILE id="B7GZZu" name="PlaylistStorage.h" compile="0" resource="0"
+                file="Source/PlaylistStorage.h"/>
+        </GROUP>
+      </GROUP>
+      <GROUP id="{1D6A989E-3A1C-801D-4C89-933130F8D721}" name="track">
+        <GROUP id="{0019D4F6-15CB-8835-513D-3C021E3F612E}" name="parser">
+          <FILE id="oED8Zc" name="TrackParser.cpp" compile="1" resource="0" file="Source/TrackParser.cpp"/>
+          <FILE id="WT7zud" name="TrackParser.h" compile="0" resource="0" file="Source/TrackParser.h"/>
+        </GROUP>
+        <GROUP id="{1D3D2AAE-4DE7-461B-6A5B-5007E6BB9C7C}" name="factory">
+          <FILE id="M4wlRh" name="TrackFactory.cpp" compile="1" resource="0"
+                file="Source/TrackFactory.cpp"/>
+          <FILE id="SovvwT" name="TrackFactory.h" compile="0" resource="0" file="Source/TrackFactory.h"/>
+        </GROUP>
+        <GROUP id="{55912A3C-5F2B-72F8-401D-03200A390625}" name="model">
+          <FILE id="lf3PCP" name="Track.cpp" compile="1" resource="0" file="Source/Track.cpp"/>
+          <FILE id="PA6OCq" name="Track.h" compile="0" resource="0" file="Source/Track.h"/>
+        </GROUP>
+      </GROUP>
       <FILE id="nBjnc1" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="Lr36v6" name="DeckStorage.cpp" compile="1" resource="0" file="Source/DeckStorage.cpp"/>
-      <FILE id="g2VN60" name="DeckStorage.h" compile="0" resource="0" file="Source/DeckStorage.h"/>
-      <FILE id="lcX3yQ" name="HotCueButtonInfo.cpp" compile="1" resource="0"
-            file="Source/HotCueButtonInfo.cpp"/>
-      <FILE id="uyxbiI" name="HotCueButtonInfo.h" compile="0" resource="0"
-            file="Source/HotCueButtonInfo.h"/>
-      <FILE id="VDZQqS" name="AutoSave.cpp" compile="1" resource="0" file="Source/AutoSave.cpp"/>
       <FILE id="OJ0Xrs" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
-      <FILE id="wVdcSG" name="HotCueButtonPanel.cpp" compile="1" resource="0"
-            file="Source/HotCueButtonPanel.cpp"/>
-      <FILE id="ogSQh3" name="HotCueButtonPanel.h" compile="0" resource="0"
-            file="Source/HotCueButtonPanel.h"/>
-      <FILE id="m0T1PV" name="HotCueButton.cpp" compile="1" resource="0"
-            file="Source/HotCueButton.cpp"/>
-      <FILE id="IEQzih" name="DeckConfigurationParser.cpp" compile="1" resource="0"
-            file="Source/DeckConfigurationParser.cpp"/>
-      <FILE id="Dqdy3r" name="DeckConfigurationParser.h" compile="0" resource="0"
-            file="Source/DeckConfigurationParser.h"/>
-      <FILE id="u06j4n" name="FileStorage.cpp" compile="1" resource="0" file="Source/FileStorage.cpp"/>
-      <FILE id="jKmcxA" name="FileStorage.h" compile="0" resource="0" file="Source/FileStorage.h"/>
-      <FILE id="bJUd3u" name="HotCueButton.h" compile="0" resource="0" file="Source/HotCueButton.h"/>
-      <FILE id="V5xAZa" name="AutoSave.h" compile="0" resource="0" file="Source/AutoSave.h"/>
       <FILE id="CoVVKI" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
   </MAINGROUP>

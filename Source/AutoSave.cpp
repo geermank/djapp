@@ -9,9 +9,11 @@
 */
 
 #include "AutoSave.h"
+#include "TimeFormat.h"
 
 AutoSave::AutoSave() {
     startTimer(delay);
+    nextAutoSaveTime = TimeFormat::formatTimeAsHHMM(nextAutoSaveTimeFromNowMs());
 }
 
 void AutoSave::timerCallback() {
@@ -21,4 +23,16 @@ void AutoSave::timerCallback() {
     saveInProgress = true;
     saveProject();
     saveInProgress = false;
+
+    nextAutoSaveTime = TimeFormat::formatTimeAsHHMM(nextAutoSaveTimeFromNowMs());
+    onAutoSaveExecuted(TimeFormat::formatTimeAsHHMM(juce::Time::getCurrentTime()),
+                       nextAutoSaveTime);
+}
+
+juce::Time AutoSave::nextAutoSaveTimeFromNowMs() {
+    return juce::Time::getCurrentTime() + juce::RelativeTime::milliseconds(delay);
+}
+
+juce::String AutoSave::getNextAutoSaveTime() {
+    return nextAutoSaveTime;
 }

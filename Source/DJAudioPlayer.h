@@ -27,7 +27,6 @@ class DJAudioPlayer : public AudioSource {
     void setSpeed(double ratio);
     void setPosition(double posInSecs);
     void setPositionRelative(double pos);
-    
 
     void start();
     void stop();
@@ -38,15 +37,23 @@ class DJAudioPlayer : public AudioSource {
     
     /** the current position in seconds */
     double getPositionInSeconds();
-
+    
+    /** EQ methods */
+    void setLowGain(float gainDb);
+    void setMidGain(float gainDb);
+    void setHighGain(float gainDb);
 private:
     AudioFormatManager& formatManager;
     std::unique_ptr<AudioFormatReaderSource> readerSource;
     AudioTransportSource transportSource; 
     ResamplingAudioSource resampleSource{&transportSource, false, 2};
 
+    /** EQ attributes  */
+    using Filter = juce::dsp::IIR::Filter<float>;
+    using FilterCoefs = juce::dsp::IIR::Coefficients<float>;
+    using MonoChain = juce::dsp::ProcessorChain<Filter, Filter, Filter>;
+
+    MonoChain leftChain;
+    MonoChain rightChain;
+    double currentSampleRate = 44100.0;
 };
-
-
-
-
